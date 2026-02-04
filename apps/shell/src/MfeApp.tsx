@@ -1,13 +1,15 @@
 import React, { Suspense } from 'react';
 import type { MFEEntry } from './mfeRegister';
-import NavMenu from './NavMenu';
+import NavMenu from './components/NavMenu';
 
 const MfeApp: React.FC<{ mfe: MFEEntry }> = ({ mfe }) => {
   const RemoteApp = mfe.component;
   return (
     <Suspense fallback={<div>Loading {mfe.name}...</div>}>
-      <NavMenu />
-      <RemoteApp />
+      <div className="main-wrapper">
+        <NavMenu />
+        <RemoteApp />
+      </div>
     </Suspense>
   );
 };

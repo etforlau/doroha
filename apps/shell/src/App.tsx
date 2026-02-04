@@ -1,10 +1,12 @@
-import NavMenu from './NavMenu';
+import NavMenu from './components/NavMenu';
 
 const App = () => {
   return (
-    <div className="w-full min-h-screen bg-gray-100">
+    <div className="main-wrapper">
       <NavMenu />
-      <h1>Home</h1>
+      <div>
+        <h1>Home</h1>
+      </div>
     </div>
   );
 };
