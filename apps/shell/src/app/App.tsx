@@ -1,4 +1,4 @@
-import NavMenu from './components/NavMenu';
+import NavMenu from './NavMenu';
 
 const App = () => {
   return (

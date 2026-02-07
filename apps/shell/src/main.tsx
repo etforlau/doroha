@@ -1,9 +1,9 @@
 import { StrictMode } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
+import App from './app/App';
 import { MFEs } from './mfeRegister';
-import MfeApp from './MfeApp';
+import MfeApp from './app/MfeApp';
 
 const routes = MFEs.map((mfe) => ({
   path: mfe.route,

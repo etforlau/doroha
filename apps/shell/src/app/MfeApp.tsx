@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
-import type { MFEEntry } from './mfeRegister';
-import NavMenu from './components/NavMenu';
+import type { MFEEntry } from '../mfeRegister';
+import NavMenu from './NavMenu';
 
 const MfeApp: React.FC<{ mfe: MFEEntry }> = ({ mfe }) => {
   const RemoteApp = mfe.component;
