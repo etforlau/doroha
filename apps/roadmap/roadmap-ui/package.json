@@ -1,0 +1,12 @@
+{
+  "name": "@doroha/roadmap-ui",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "deploy": {
+        "command": "npx nx build roadmap-ui && gh-pages -d apps/roadmap/roadmap-ui/dist -b main -r https://github.com/etforlau/doroha-cdn.git --dest roadmap"
+      }
+    }
+  }
+}
