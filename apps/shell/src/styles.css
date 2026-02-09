@@ -126,7 +126,7 @@
 }
 
 .nav-menu-link {
-  @apply m-0 text-center bg-[#f09d31] rounded;
+  @apply m-0 text-center bg-[#feb001] rounded;
 }
 
 .nav-menu-link:hover {

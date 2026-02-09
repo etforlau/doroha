@@ -1,3 +1,4 @@
+import React from 'react';
 import { MFEs } from '../mfeRegister';
 import {
   NavigationMenu,
@@ -5,7 +6,11 @@ import {
   NavigationMenuLink,
 } from '@/components/ui/navigation-menu';
 
-const NavMenu = () => {
+type NavMenuProps = {
+  className?: string;
+} & React.ComponentProps<'div'>;
+
+const NavMenu: React.FC<NavMenuProps> = ({ className, ...props }) => {
   const appRoutes = MFEs.map((mfe) => (
     <NavigationMenuItem key={mfe.name} className="nav-menu-item">
       <NavigationMenuLink href={mfe.route} className="nav-menu-link">
@@ -15,7 +20,7 @@ const NavMenu = () => {
   ));
 
   return (
-    <div className="min-w-[20%] p-5">
+    <div className={`min-w-[20%] p-5 ${className}`} {...props}>
       <NavigationMenu
         orientation="vertical"
         className="min-w-full h-full flex-col justify-start list-none m-0 px-[15px] py-[50px] bg-[#f06231] rounded"

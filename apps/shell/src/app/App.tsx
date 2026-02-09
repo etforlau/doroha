@@ -1,7 +1,22 @@
-import { motion, Variants } from 'motion/react';
+import { useEffect } from 'react';
+import { useAnimate, stagger, AnimationSequence } from 'motion/react';
 import NavMenu from './NavMenu';
+import homepageAnimation from '@/assets/easy_travel.gif';
 
 const App = () => {
+  const [scope, animate] = useAnimate();
+  useEffect(() => {
+    const sequence: AnimationSequence = [
+      ['#name', { opacity: [0, 1] }, { duration: 1 }],
+      ['.name-row', { opacity: [0, 1], y: [-24, 0] }, { delay: stagger(0.2) }],
+      ['.word-span', { opacity: [0, 1], x: [-10, 0] }, { delay: stagger(0.2) }],
+      ['#homepage-animation', { opacity: [0, 1], x: [70, 0] }, { at: '+0.2' }],
+      ['#nav-menu', { opacity: [0, 1], x: [-30, 0] }, { at: '+0.3' }],
+      ['#credits-span', { opacity: [0, 1], y: [5, 0] }, { at: '+0.3' }],
+    ];
+    animate(sequence);
+  });
+
   const acronym = [
     { letter: 'D', word: 'iary' },
     { letter: 'O', word: 'rganizer' },
@@ -11,67 +26,82 @@ const App = () => {
     { letter: 'A', word: 'lly' },
   ];
 
-  const containerVariant: Variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
-  };
-
-  const rowVariant: Variants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 1.5 } },
-  };
-
-  const letterVariant: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const wordVariant: Variants = {
-    hidden: { x: -10, opacity: 0 },
-    visible: { x: 0, opacity: 1 },
-  };
-
   return (
-    <div className="main-wrapper">
-      <NavMenu />
+    <div className="main-wrapper" ref={scope}>
+      <NavMenu id="nav-menu" />
 
-      <motion.div
-        className="ml-20
-        my-auto
+      <div
+        id="name"
+        className="min-w-fit
+        flex
+        flex-col
+        pl-20
+        py-5
         font-['Be_Vietnam_Pro',sans-serif]"
-        variants={containerVariant}
-        initial="hidden"
-        animate="visible"
       >
         {acronym.map(({ letter, word }, index) => (
-          <motion.div
+          <div
             key={`$word-${index}`}
-            className="flex items-baseline overflow-hidden"
-            variants={rowVariant}
+            className="name-row
+            flex
+            items-baseline
+            overflow-hidden"
           >
-            <motion.span
-              className="
+            <span
+              className="letter-span
               font-black
               text-8xl
               text-[#f06231]
               leading-none"
-              variants={letterVariant}
             >
               {letter}
-            </motion.span>
+            </span>
 
-            <motion.span
-              className="text-6xl
+            <span
+              className="word-span
+              text-6xl
               font-bold
               text-left
               leading-none"
-              variants={wordVariant}
             >
               {word}
-            </motion.span>
-          </motion.div>
+            </span>
+          </div>
         ))}
-      </motion.div>
+
+        <span id="credits-span" className="mt-auto">
+          <a
+            href="https://iconscout.com/lottie-animations/man"
+            className="underline font-size-sm"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Man check hotel booking calendar
+          </a>
+          {' by '}
+          <a
+            href="https://iconscout.com/contributors/odkayo"
+            className="underline font-size-sm"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Ona Chang
+          </a>
+        </span>
+      </div>
+
+      <img
+        id="homepage-animation"
+        src={homepageAnimation}
+        alt="Man checking booking on laptop"
+        aria-hidden="true"
+        className="
+        w-[40%]
+        ml-auto
+        mr-20
+        pointer-events-none
+        object-contain"
+      />
     </div>
   );
 };
