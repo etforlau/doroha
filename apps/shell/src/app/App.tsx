@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAnimate, stagger, AnimationSequence } from 'motion/react';
 import NavMenu from './NavMenu';
-import homepageAnimation from '@/assets/easy_travel.gif';
+import Lottie from './Lottie';
 
 const App = () => {
   const [scope, animate] = useAnimate();
@@ -27,7 +27,7 @@ const App = () => {
   ];
 
   return (
-    <div className="main-wrapper" ref={scope}>
+    <div className="main-wrapper overflow-hidden" ref={scope}>
       <NavMenu id="nav-menu" />
 
       <div
@@ -35,8 +35,9 @@ const App = () => {
         className="min-w-fit
         flex
         flex-col
-        pl-20
-        py-5
+        pl-40
+        pt-15
+        pb-5
         font-['Be_Vietnam_Pro',sans-serif]"
       >
         {acronym.map(({ letter, word }, index) => (
@@ -44,8 +45,7 @@ const App = () => {
             key={`$word-${index}`}
             className="name-row
             flex
-            items-baseline
-            overflow-hidden"
+            items-baseline"
           >
             <span
               className="letter-span
@@ -89,19 +89,7 @@ const App = () => {
           </a>
         </span>
       </div>
-
-      <img
-        id="homepage-animation"
-        src={homepageAnimation}
-        alt="Man checking booking on laptop"
-        aria-hidden="true"
-        className="
-        w-[40%]
-        ml-auto
-        mr-20
-        pointer-events-none
-        object-contain"
-      />
+      <Lottie id="homepage-animation" className="w-[47vw] mx-auto" />
     </div>
   );
 };
