@@ -8,5 +8,11 @@
         "command": "npx nx build roadmap-ui && gh-pages -d apps/roadmap/roadmap-ui/dist -b main -r https://github.com/etforlau/doroha-cdn.git --dest roadmap"
       }
     }
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.2.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-router-dom": "7.13.0"
   }
 }
