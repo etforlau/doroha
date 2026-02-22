@@ -1,0 +1,9 @@
+_format_version: '2.1'
+
+services:
+  - name: shell
+    url: http://shell:5001
+    routes:
+      - name: shell
+        paths:
+          - /
